@@ -9,14 +9,19 @@
   <a href="./README.md">中文</a> | <a href="./README_en.md">English</a>
 </p>
 
-<p align="center">
-  <img src="assets/wechat-qr.jpg" width="200" alt="微信二维码" />
-  &nbsp;&nbsp;
-  <img src="assets/mp-qr.jpg" width="200" alt="公众号二维码" />
-</p>
-<p align="center">
-  <b>💬 微信：周杰 律师</b> &nbsp;|&nbsp; <b>📰 公众号：扫码关注</b>
-</p>
+<table align="center" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="center" valign="top">
+      <img src="assets/mp-qr.jpg" width="200" alt="公众号二维码" /><br>
+      <b>📰 公众号：扫码关注</b>
+    </td>
+    <td width="40"></td>
+    <td align="center" valign="top">
+      <img src="assets/wechat-qr.jpg" width="200" alt="微信二维码" /><br>
+      <b>💬 微信：周杰 律师</b>
+    </td>
+  </tr>
+</table>
 
 ---
 
