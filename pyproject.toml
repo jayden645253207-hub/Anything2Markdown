@@ -1,0 +1,92 @@
+[project]
+name = "anything2markdown"
+version = "0.1.0"
+description = "Universal file and URL parser for LLM pipelines - converts various media to clean Markdown/JSON"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+keywords = ["markdown", "parser", "pdf", "ocr", "llm", "converter"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    # Core parsing
+    "markitdown[all]>=0.1.0,<1.0.0",
+
+    # URL parsing
+    "firecrawl-py>=1.0.0,<2.0.0",
+    "youtube-transcript-api>=1.0.0,<2.0.0",
+    "yt-dlp>=2024.0.0,<2026.0.0",
+
+    # Data processing
+    "pandas>=2.0.0,<3.0.0",
+    "openpyxl>=3.1.0,<4.0.0",
+    "xlrd>=2.0.1,<3.0.0",
+    "pypdf>=4.0.0,<6.0.0",
+    "PyMuPDF>=1.24.0,<2.0.0",
+
+    # HTTP requests (for MinerU API)
+    "httpx>=0.27.0,<1.0.0",
+
+    # CLI and config
+    "click>=8.1.0,<9.0.0",
+    "python-dotenv>=1.0.0,<2.0.0",
+    "pydantic>=2.0.0,<3.0.0",
+    "pydantic-settings>=2.0.0,<3.0.0",
+
+    # Logging
+    "structlog>=24.0.0,<26.0.0",
+
+    # LLM client
+    "openai>=1.0.0,<2.0.0",
+
+    # Web server (optional, for API/WebUI)
+    "gradio>=4.0.0",
+    "fastapi>=0.110.0",
+    "uvicorn>=0.29.0",
+    "mcp>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0,<9.0.0",
+    "pytest-cov>=4.0.0,<5.0.0",
+    "ruff>=0.3.0,<1.0.0",
+]
+
+[project.scripts]
+anything2md = "anything2markdown.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/yourusername/anything2markdown"
+Repository = "https://github.com/yourusername/anything2markdown"
+Issues = "https://github.com/yourusername/anything2markdown/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/anything2markdown"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]

@@ -1,0 +1,71 @@
+Anything2Markdown
+Copyright 2026 The Anything2Markdown Authors
+
+Licensed under the MIT License (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://opensource.org/licenses/MIT
+
+================================================================================
+Third-party software included or required by this project
+================================================================================
+
+This product depends on several third-party libraries via pip / npm. Their
+copyrights and licenses remain with their respective authors. The following list
+covers the major dependencies that ship with the default installation; for the
+authoritative list, see `pyproject.toml` and the metadata of each installed
+package.
+
+----------------------------------------------------------------------
+MarkItDown — https://github.com/microsoft/markitdown
+  © Microsoft Corporation. Licensed under the MIT License.
+  Used by: primary parser for PDF / Word / PPT / HTML / EPUB / text.
+
+----------------------------------------------------------------------
+PaddleOCR / PaddleOCR-VL — https://github.com/PaddlePaddle/PaddleOCR
+  © PaddlePaddle Authors. Licensed under the Apache License 2.0.
+  Used by: OCR for scanned PDFs and images.
+
+----------------------------------------------------------------------
+Firecrawl Python SDK — https://github.com/mendableai/firecrawl
+  © Mendable / Firecrawl Authors. Licensed under the AGPL-3.0 (server)
+  with an MIT-licensed Python SDK. This project uses the SDK only.
+  Used by: general web URL parsing.
+
+----------------------------------------------------------------------
+Repomix — https://github.com/yamadashy/repomix
+  © Kazuki Yamada. Licensed under the MIT License.
+  Used by: GitHub repo → single Markdown, invoked as an external
+  Node.js CLI. Not bundled.
+
+----------------------------------------------------------------------
+yt-dlp — https://github.com/yt-dlp/yt-dlp
+  © yt-dlp Contributors. Licensed under the Unlicense.
+  Used by: Bilibili audio extraction fallback.
+
+----------------------------------------------------------------------
+youtube-transcript-api — https://github.com/jdepoix/youtube-transcript-api
+  © Jonas Depoix. Licensed under the MIT License.
+  Used by: YouTube transcripts.
+
+----------------------------------------------------------------------
+faster-whisper — https://github.com/SYSTRAN/faster-whisper
+  © SYSTRAN. Licensed under the MIT License.
+  Used by: local audio-to-text fallback. Optional dependency.
+
+----------------------------------------------------------------------
+MinerU — https://mineru.net/
+  © OpenDataLab. The hosted API is governed by its provider's terms of service.
+  Used by: optional alternative PDF backend.
+
+----------------------------------------------------------------------
+Model Context Protocol Python SDK — https://github.com/modelcontextprotocol/python-sdk
+  © Anthropic, PBC. Licensed under the MIT License.
+  Used by: `anything2markdown.mcp_server`.
+
+----------------------------------------------------------------------
+Other Python dependencies (FastAPI, Pydantic, structlog, click, openai SDK,
+pandas, openpyxl, PyMuPDF, pypdf, gradio, etc.) are distributed under their
+respective licenses (mostly MIT / BSD / Apache 2.0).
+See the metadata of each installed package for details.
