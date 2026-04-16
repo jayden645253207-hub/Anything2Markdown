@@ -49,9 +49,7 @@ def probe_pdf(
 
         pages_with_text = sum(1 for value in text_lengths if value > 0)
         average_text_length = sum(text_lengths) / len(text_lengths) if text_lengths else 0.0
-        has_text_layer = pages_with_text > 0 or any(
-            value >= min_chars_per_page for value in text_lengths
-        )
+        has_text_layer = any(value >= min_chars_per_page for value in text_lengths)
 
         return PDFProbeResult(
             page_count=page_count,

@@ -33,7 +33,7 @@ def _pdf_fallback(router: Router, path: Path, result):
     """Apply the same PDF OCR fallback logic used by the CLI."""
     if (
         path.suffix.lower() == ".pdf"
-        and result.parser_name == "markitdown"
+        and result.parser_used == "markitdown"
         and result.status == "failed"
     ):
         ocr_parser = router.get_ocr_fallback_parser()
@@ -42,7 +42,7 @@ def _pdf_fallback(router: Router, path: Path, result):
     if (
         path.suffix.lower() == ".pdf"
         and result.status == "success"
-        and result.parser_name == "markitdown"
+        and result.parser_used == "markitdown"
         and result.output_path
         and result.output_path.exists()
     ):

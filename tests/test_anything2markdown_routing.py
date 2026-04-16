@@ -23,7 +23,7 @@ def test_probe_routes_digital_pdf_to_markitdown(tmp_path, monkeypatch):
     pdf_path = tmp_path / "digital.pdf"
     doc = fitz.open()
     page = doc.new_page()
-    page.insert_text((72, 72), "This is embedded text inside the PDF.")
+    page.insert_text((72, 72), "This is embedded text inside the PDF. It has enough characters to exceed the minimum threshold for a text layer.")
     doc.save(pdf_path)
     doc.close()
 
