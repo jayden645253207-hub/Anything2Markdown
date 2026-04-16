@@ -45,7 +45,12 @@ def cli():
     type=click.Choice(["token_efficient", "balanced"]),
     help="Parsing strategy. token_efficient prefers text-layer and non-LLM OCR backends.",
 )
-def run(input_dir: Path | None, output_dir: Path | None, verbose: bool, strategy: str | None):
+@click.option(
+    "--mirror",
+    is_flag=True,
+    help="Output .md files next to originals in a 'markdown/' sub-directory with matching file names.",
+)
+def run(input_dir: Path | None, output_dir: Path | None, verbose: bool, strategy: str | None, mirror: bool):
     """
     Run the Anything2Markdown pipeline.
 
@@ -61,6 +66,8 @@ def run(input_dir: Path | None, output_dir: Path | None, verbose: bool, strategy
         settings.log_level = "DEBUG"
     if strategy:
         settings.parsing_strategy = strategy
+    if mirror:
+        settings.mirror_mode = True
 
     # Setup logging
     setup_logging()

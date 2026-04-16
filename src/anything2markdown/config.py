@@ -58,6 +58,12 @@ class Settings(BaseModuleConfig):
     bilibili_cookies_from_browser: str = Field(default="")  # Browser to extract cookies from (chrome/firefox/safari/edge); empty to disable
     whisperx_model: str = Field(default="small")  # WhisperX model size
 
+    # Output layout
+    mirror_mode: bool = Field(
+        default=False,
+        description="When True, output .md files next to originals in a 'markdown/' sub-directory with matching file names.",
+    )
+
 
 def get_settings() -> Settings:
     """Get settings instance. Creates new instance each time to pick up env changes."""

@@ -99,6 +99,7 @@ def flatten_path(file_path: Path, root_dir: Path) -> str:
     - Direct children of root_dir stay flat: ``file.pdf`` → ``file``
     - Files inside a subdirectory are grouped under the first sub-dir:
       ``sub/a/b/file.pdf`` → ``sub/a_b_file``
+    - When ``settings.mirror_mode`` is True, always use the original file stem.
 
     Args:
         file_path: Full path to the file
@@ -107,6 +108,11 @@ def flatten_path(file_path: Path, root_dir: Path) -> str:
     Returns:
         Output name without extension (may contain one ``/`` for grouped files)
     """
+    from anything2markdown.config import settings
+
+    if getattr(settings, "mirror_mode", False):
+        return file_path.stem
+
     try:
         relative = file_path.relative_to(root_dir)
         parts = relative.parts

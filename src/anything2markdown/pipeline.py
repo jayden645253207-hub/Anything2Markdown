@@ -179,13 +179,20 @@ class Anything2MarkdownPipeline:
         # Route to appropriate parser
         parser = self.router.route_file(file_path)
 
+        # Determine output directory based on mirror_mode
+        if settings.mirror_mode:
+            output_dir = file_path.parent / "markdown"
+        else:
+            output_dir = settings.output_dir
+        ensure_directory(output_dir)
+
         # Skip if non-empty output already exists (resume after interruption)
         from .utils.file_utils import flatten_path
 
         flat_stem = flatten_path(file_path, settings.input_dir)
-        expected_output = settings.output_dir / (flat_stem + ".md")
+        expected_output = output_dir / (flat_stem + ".md")
         if not expected_output.exists():
-            expected_output = settings.output_dir / (flat_stem + ".json")
+            expected_output = output_dir / (flat_stem + ".json")
         if expected_output.exists() and expected_output.stat().st_size > 0:
             logger.info(
                 "Skipping already-processed file",
@@ -208,7 +215,7 @@ class Anything2MarkdownPipeline:
             )
 
         # Parse the file
-        result = parser.parse(file_path, settings.output_dir)
+        result = parser.parse(file_path, output_dir)
 
         # If MarkItDown fails on a PDF, try OCR fallback before returning failure
         if (
@@ -218,7 +225,7 @@ class Anything2MarkdownPipeline:
         ):
             logger.info("MarkItDown failed on PDF, trying OCR fallback", file=file_path.name)
             ocr_parser = self.router.get_ocr_fallback_parser()
-            result = ocr_parser.parse(file_path, settings.output_dir)
+            result = ocr_parser.parse(file_path, output_dir)
 
         # Check for OCR fallback (only for PDFs parsed by MarkItDown)
         if (
@@ -237,7 +244,7 @@ class Anything2MarkdownPipeline:
 
                 # Re-parse with PaddleOCR-VL
                 ocr_parser = self.router.get_ocr_fallback_parser()
-                result = ocr_parser.parse(file_path, settings.output_dir)
+                result = ocr_parser.parse(file_path, output_dir)
 
         return result
 
