@@ -61,7 +61,7 @@ def run(input_dir: Path | None, output_dir: Path | None, verbose: bool, strategy
     if input_dir:
         settings.input_dir = input_dir
         if not output_dir and not mirror:
-            settings.output_dir = input_dir.parent / (input_dir.name + "AI工作专区")
+            settings.output_dir = input_dir / (input_dir.name + "AI工作专区")
     if output_dir:
         settings.output_dir = output_dir
     if verbose:
