@@ -94,11 +94,10 @@ def get_file_size_mb(file_path: Path) -> float:
 
 def flatten_path(file_path: Path, root_dir: Path) -> str:
     """
-    Convert nested path to a grouped or flat output name.
+    Convert a file path to an output path stem relative to root_dir.
 
-    - Direct children of root_dir stay flat: ``file.pdf`` → ``file``
-    - Files inside a subdirectory are grouped under the first sub-dir:
-      ``sub/a/b/file.pdf`` → ``sub/a_b_file``
+    - Preserves the full directory structure by default:
+      ``sub/a/b/file.pdf`` → ``sub/a/b/file``
     - When ``settings.mirror_mode`` is True, always use the original file stem.
 
     Args:
@@ -106,7 +105,7 @@ def flatten_path(file_path: Path, root_dir: Path) -> str:
         root_dir: Root directory to make path relative to
 
     Returns:
-        Output name without extension (may contain one ``/`` for grouped files)
+        Output path stem (may contain ``/`` for nested directories)
     """
     from anything2markdown.config import settings
 
@@ -115,14 +114,6 @@ def flatten_path(file_path: Path, root_dir: Path) -> str:
 
     try:
         relative = file_path.relative_to(root_dir)
-        parts = relative.parts
-        if len(parts) <= 1:
-            # Direct child → flat
-            return relative.stem
-        else:
-            # Grouped: first subdirectory becomes folder, rest flattened
-            group = parts[0]
-            rest = "_".join(parts[1:])
-            return str(Path(group) / Path(rest).stem)
+        return str(relative.with_suffix(""))
     except ValueError:
         return file_path.stem
