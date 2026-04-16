@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [
-    {name = "Your Name", email = "your.email@example.com"}
+    {name = "Jayden Zhou", email = "zhoujie@example.com"}
 ]
 keywords = ["markdown", "parser", "pdf", "ocr", "llm", "converter"]
 classifiers = [
@@ -68,9 +68,9 @@ dev = [
 anything2md = "anything2markdown.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/yourusername/anything2markdown"
-Repository = "https://github.com/yourusername/anything2markdown"
-Issues = "https://github.com/yourusername/anything2markdown/issues"
+Homepage = "https://github.com/jayden645253207-hub/Anything2Markdown"
+Repository = "https://github.com/jayden645253207-hub/Anything2Markdown"
+Issues = "https://github.com/jayden645253207-hub/Anything2Markdown/issues"
 
 [build-system]
 requires = ["hatchling"]

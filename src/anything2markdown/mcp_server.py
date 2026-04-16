@@ -141,7 +141,6 @@ async def list_supported_extensions() -> list[str]:
         ".epub",
         ".txt",
         ".md",
-        ".json",
         ".png",
         ".jpg",
         ".jpeg",

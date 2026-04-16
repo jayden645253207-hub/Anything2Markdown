@@ -103,7 +103,7 @@ class PaddleOCRTextParser(BaseParser):
         headers = {
             "Authorization": f"token {token}",
             "Content-Type": "application/json",
-            "Client-Platform": "anything2workspace",
+            "Client-Platform": "anything2markdown",
         }
 
         timeout = float(

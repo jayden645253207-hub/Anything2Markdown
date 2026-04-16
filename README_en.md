@@ -122,13 +122,13 @@ The core idea is a **unified entry point**: whether the input is PDF, Excel, ima
 Requirements: Python 3.10+
 
 ```bash
-git clone https://github.com/yourusername/anything2markdown.git
-cd anything2markdown
+git clone https://github.com/jayden645253207-hub/Anything2Markdown.git
+cd Anything2Markdown
 
 python -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\activate
 
-pip install -e ".[dev]"
+pip install -e .
 
 # If you need GitHub repo parsing, also install repomix
 npm install -g repomix
@@ -245,7 +245,7 @@ anything2md web
 |:---|:---|:---|:---|
 | **General web page parsing** | FireCrawl | Only for `parse-url` on regular web pages | [firecrawl.dev](https://www.firecrawl.dev/) |
 | **Scanned PDF / image OCR fallback** | SiliconFlow (PaddleOCR-VL) | Only when scanned docs/images fail MarkItDown and no local OCR is deployed | [siliconflow.cn](https://siliconflow.cn/) |
-| **Complex PDF alternative parsing** | MinerU | Optional (disabled by default) | [mineru.net](https://mineru.net/) |
+| **Complex PDF alternative parsing** | MinerU | Optional (OCR fallback only; proactive routing disabled) | [mineru.net](https://mineru.net/) |
 | **Production OCR (text/doc)** | PaddleOCR API | Optional | [PaddleOCR Cloud](https://www.paddlepaddle.org.cn/) or self-hosted |
 | **Custom OCR script** | Manner OCR / local command | Optional | Configure local executable `MANNER_OCR_COMMAND` |
 
@@ -256,7 +256,7 @@ anything2md web
 - **Add scanned PDF / image OCR**:
   - Option A (easy): Get a [SiliconFlow](https://siliconflow.cn/) API key and use cloud PaddleOCR-VL.
   - Option B (local): Self-host PaddleOCR and set `OCR_BASE_URL` and `PADDLEOCR_*` configs.
-- **High-quality complex PDFs**: Get a [MinerU](https://mineru.net/) API key and set `SCANNED_PDF_PARSER=mineru`.
+- **Complex PDF OCR fallback**: Get a [MinerU](https://mineru.net/) API key and set `SCANNED_PDF_PARSER=mineru` (currently available only as an OCR fallback for scanned PDFs).
 
 ---
 

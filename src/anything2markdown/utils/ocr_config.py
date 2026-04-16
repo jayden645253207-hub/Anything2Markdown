@@ -5,8 +5,18 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-PADDLE_TEXT_SKILL_ROOT = Path.home() / ".codex" / "skills" / "paddleocr-text-recognition"
-PADDLE_DOC_SKILL_ROOT = Path.home() / ".codex" / "skills" / "paddleocr-doc-parsing"
+PADDLE_TEXT_SKILL_ROOT = Path(
+    os.getenv(
+        "PADDLE_TEXT_SKILL_ROOT",
+        str(Path.home() / ".config" / "anything2markdown" / "skills" / "paddleocr-text-recognition"),
+    )
+)
+PADDLE_DOC_SKILL_ROOT = Path(
+    os.getenv(
+        "PADDLE_DOC_SKILL_ROOT",
+        str(Path.home() / ".config" / "anything2markdown" / "skills" / "paddleocr-doc-parsing"),
+    )
+)
 
 
 def _load_env_file(path: Path) -> dict[str, str]:

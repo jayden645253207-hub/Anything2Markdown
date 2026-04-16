@@ -16,7 +16,7 @@ WORKDIR /app
 COPY pyproject.toml README.md ./
 COPY src/ ./src/
 RUN pip install --upgrade pip && \
-    pip install --no-cache-dir -e ".[dev]"
+    pip install --no-cache-dir -e .
 
 # Create runtime directories
 RUN mkdir -p input output logs/json logs/text

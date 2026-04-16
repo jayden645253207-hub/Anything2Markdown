@@ -81,7 +81,7 @@ cd Anything2Markdown
 python -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\activate
 
-pip install -e ".[dev]"
+pip install -e .
 ```
 
 ### 第二步：初始化
@@ -230,7 +230,7 @@ for r in results:
 |:---|:---|:---|:---|
 | **通用网页解析** | FireCrawl | 仅 `parse-url` 处理普通网页时需要 | [firecrawl.dev](https://www.firecrawl.dev/) |
 | **扫描版 PDF / 图片 OCR 回退** | SiliconFlow (PaddleOCR-VL) | 仅当扫描件/图片 MarkItDown 解析失败且未部署本地 OCR 时需要 | [siliconflow.cn](https://siliconflow.cn/) |
-| **复杂 PDF 替代解析** | MinerU | 可选（默认关闭） | [mineru.net](https://mineru.net/) |
+| **复杂 PDF 替代解析** | MinerU | 可选（仅作为 OCR fallback，主动路由已禁用） | [mineru.net](https://mineru.net/) |
 | **生产级 OCR (文字/文档)** | PaddleOCR API | 可选 | [PaddleOCR 云服务](https://www.paddlepaddle.org.cn/) 或自行部署本地服务 |
 | **自定义 OCR 脚本** | Manner OCR / 本地命令 | 可选 | 配置本地可执行命令 `MANNER_OCR_COMMAND` |
 
@@ -241,7 +241,7 @@ for r in results:
 - **增加扫描件/图片 OCR**：
   - 方案 A（简单）：申请 [SiliconFlow](https://siliconflow.cn/) API Key，使用云端 PaddleOCR-VL。
   - 方案 B（本地）：自行部署 PaddleOCR 服务，填写 `OCR_BASE_URL` 和 `PADDLEOCR_*` 相关配置。
-- **高质量复杂 PDF**：申请 [MinerU](https://mineru.net/) API Key，修改 `SCANNED_PDF_PARSER=mineru`。
+- **复杂 PDF OCR fallback**：申请 [MinerU](https://mineru.net/) API Key，修改 `SCANNED_PDF_PARSER=mineru`（当前仅作为扫描版 PDF 的 OCR fallback 可用）。
 
 ---
 

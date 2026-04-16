@@ -369,14 +369,11 @@ class MinerUParser(BaseParser):
 
     def _upload_file(self, client: httpx.Client, upload_url: str, file_path: Path) -> None:
         """Upload file to the presigned URL using PUT."""
-        import requests  # Use requests for streaming upload (more reliable for large files)
-
         file_size = file_path.stat().st_size / (1024 * 1024)
         logger.info("Uploading file", file=file_path.name, size_mb=f"{file_size:.1f}")
 
-        # Use requests for streaming upload (httpx has issues with large file uploads)
         with open(file_path, "rb") as f:
-            response = requests.put(upload_url, data=f, timeout=600)
+            response = client.put(upload_url, content=f, timeout=600)
 
         response.raise_for_status()
         logger.info("Upload complete", file=file_path.name)

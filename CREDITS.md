@@ -1,8 +1,8 @@
 # Credits & Acknowledgments
 
-Anything2Workspace is a thin orchestration layer over a long list of excellent
-upstream projects. This file records what we use, where we use it, and the
-license under which we use it.
+Anything2Markdown is a universal file and URL parser for LLM pipelines. It is a
+thin orchestration layer over a long list of excellent upstream projects. This
+file records what we use, where we use it, and the license under which we use it.
 
 ## Module 1 — Anything2Markdown
 

@@ -56,7 +56,7 @@ class Settings(BaseModuleConfig):
     # Bilibili Configuration
     bilibili_cookies_file: str = Field(default="")  # Path to Netscape cookie file
     bilibili_cookies_from_browser: str = Field(default="")  # Browser to extract cookies from (chrome/firefox/safari/edge); empty to disable
-    whisperx_model: str = Field(default="large-v2")  # WhisperX model size
+    whisperx_model: str = Field(default="small")  # WhisperX model size
 
 
 def get_settings() -> Settings:
